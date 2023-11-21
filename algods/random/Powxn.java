@@ -89,4 +89,69 @@ public class Powxn {
             return powerBinaryExponentiation(x * x, n / 2);
         }
     }
+
+
+    /**
+     * Calculates the power of a number x raised to a fractional exponent n.
+     *
+     * @param x The base number
+     * @param n The fractional exponent
+     * @return The result of x raised to the power of n
+     */
+    public double powerWithFractionalExponent(double x, double n) {
+        if (x < 0 || n == 0) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+
+        if (n < 0) {
+            return 1 / powerWithFractionalExponent(x, -n);
+        }
+
+        String binaryRepresentation = toBinaryString(n);
+        double result = 1;
+
+        for (int i = binaryRepresentation.length() - 1; i >= 0; i--) {
+            if (binaryRepresentation.charAt(i) == '1') {
+                result *= power(x, 2 << i);
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * Converts a decimal number to a binary string representation.
+     *
+     * @param decimal The decimal number to convert
+     * @return The binary string representation of the decimal number
+     */
+    private String toBinaryString(double decimal) {
+        StringBuilder binaryString = new StringBuilder();
+        double fraction = decimal - (int) decimal;
+
+        while (fraction != 0) {
+            fraction *= 2;
+            if (fraction >= 1) {
+                binaryString.append('1');
+                fraction -= 1;
+            } else {
+                binaryString.append('0');
+            }
+        }
+
+        return binaryString.toString();
+    }
 }
+
+/*
+ * Follow up questions:
+ * Q1. How would you modify the solution to handle fractional exponents?
+ * A. Convert n to a binary stream and then iterate through binary representation of the fractional powers. Solution above.
+ * 
+ * Q2. How would you optimize the solution for calculating very large powers of numbers?
+ * A. - specialized algorithms like Karatsuba multiplication or Schönhage–Strassen algorithm, which can significantly reduce the number of operations required that could reduce number of operations significantly
+ *    - Parallelization
+ *    - implementing modular arithmetic and keep intermediate results with manageable bounds
+ */
+
+
