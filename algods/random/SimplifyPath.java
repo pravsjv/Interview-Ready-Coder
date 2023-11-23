@@ -1,26 +1,48 @@
 package algods.random;
 
-import java.util.LinkedList;
 import java.util.Deque;
-public class SimplifyPath {
-    public String simplifyPath(String path) {
-        if(path == null)
-            throw new IllegalArgumentException("Input cannot be null.");
+import java.util.LinkedList;
 
-        Deque<String> q = new LinkedList();
-        for(String dir : path.split("/")){
-            if(dir.equals("..")){
-                if(!q.isEmpty())
-                    q.poll();
-            } else if(!dir.isEmpty() && !dir.equals(".")){
-                q.push(dir);
+/**
+ * This class provides a method to simplify a given filesystem path.
+ *
+ * @author Praveen Kumar JV
+ */
+public class SimplifyPath {
+    /**
+     * Simplifies the given file system path, removing unnecessary directory components and collapsing consecutive slashes.
+     *
+     * @param path The input path to simplify.
+     * @return The simplified path.
+     */
+    public String simplifyPath(String path) {
+        if (path == null) {
+            throw new IllegalArgumentException("Input cannot be null.");
+        }
+
+        Deque<String> queue = new LinkedList<>(); // A stack to store directory components
+        for (String dir : path.split("/")) { // Split the path into individual directory components
+            if (dir.equals("..")) { // Encountered a ".." directory, indicating going up a level
+                if (!queue.isEmpty()) { // Remove the last directory from the stack
+                    queue.poll();
+                }
+            } else if (!dir.isEmpty() && !dir.equals(".")) { // Valid directory component
+                queue.push(dir); // Add the directory component to the stack
             }
         }
-        StringBuilder sb = new StringBuilder();
-        while(!q.isEmpty()){
-            sb.append("/").append(q.pollLast());
+
+        StringBuilder simplifiedPath = new StringBuilder(); // A string builder to construct the simplified path
+        while (!queue.isEmpty()) { // Construct the simplified path from the stack
+            simplifiedPath.append("/");
+            simplifiedPath.append(queue.pollLast());
         }
 
-        return sb.length()!=0?sb.toString():"/";
+        // Handle the empty path case
+        if (simplifiedPath.length() == 0) {
+            return "/";
+        }
+
+        return simplifiedPath.toString(); // Return the simplified path
     }
 }
+
