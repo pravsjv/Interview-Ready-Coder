@@ -64,6 +64,23 @@ public class QuickUnionRankOpt {
         return count;
     }
 
+    // Optimized for ConnectedComponentsinUndirectedGraph
+    public void unionConnectedComponents(int x, int y){
+        int rootX = find(x);
+        int rootY = find(y);
+        if(rootX != rootY){
+            if(root[rootX] > root[rootY]){
+                root[rootY] = rootX;
+            } else if(root[rootX] < root[rootY]){
+                root[rootX] = rootY;
+            }else {
+                root[rootY] = rootX;
+                rank[rootX] += 1;
+            }
+            count--;
+        }
+    }
+
     public static void main(String[] args) {
         QuickUnionRankOpt uf = new QuickUnionRankOpt(10);
         // 1-2-5-6-7 3-8-9 4
