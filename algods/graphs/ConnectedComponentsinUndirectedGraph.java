@@ -1,4 +1,5 @@
-package algods.random;
+package algods.graphs;
+
 /**
  * **Thoughts:**
  *

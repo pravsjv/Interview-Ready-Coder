@@ -2,9 +2,12 @@
  * The Maze
  * LeetCode: 490
  */
-package algods.random;
+package algods.graphs;
 
 import java.util.Queue;
+
+import algods.random.Pair;
+
 import java.util.LinkedList;
 /*
  * Thoughts:

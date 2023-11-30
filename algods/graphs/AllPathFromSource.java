@@ -2,7 +2,7 @@
  * All Paths from Source to Target
  * LeetCode 797
  */
-package algods.random;
+package algods.graphs;
 
 import java.util.ArrayList;
 import java.util.List;

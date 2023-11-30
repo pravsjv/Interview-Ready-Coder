@@ -1,4 +1,4 @@
-package algods.random;
+package algods.graphs;
 
 public class QuickUnionRankOpt {
     private int[] root;

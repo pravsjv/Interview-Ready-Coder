@@ -1,4 +1,4 @@
-package algods.random;
+package algods.graphs;
 
 public class QuickUnion {
     private int[] root;

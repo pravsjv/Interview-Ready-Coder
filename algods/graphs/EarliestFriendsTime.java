@@ -1,4 +1,4 @@
-package algods.random;
+package algods.graphs;
 import java.util.Arrays;
 /**
  * **Thoughts:**

@@ -1,4 +1,4 @@
-package algods.random;
+package algods.graphs;
 
 public class GraphValidTree {
     // A grpah is said to be a valid if there are no cycles in the graph and as well all the nodes are connected
