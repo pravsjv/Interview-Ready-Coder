@@ -1,4 +1,4 @@
-package algods.facebook;
+package algods.facebook.mostfrequent;
 
 import java.util.List;
 import java.util.ArrayList;

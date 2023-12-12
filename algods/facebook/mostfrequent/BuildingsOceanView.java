@@ -1,4 +1,4 @@
-package algods.facebook;
+package algods.facebook.mostfrequent;
 
 import java.util.ArrayList;
 public class BuildingsOceanView {

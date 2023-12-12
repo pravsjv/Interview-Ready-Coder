@@ -1,4 +1,4 @@
-package algods.facebook;
+package algods.facebook.mostfrequent;
 
 public class ValidWordAbbreviation {
     public boolean validWordAbbreviation(String word, String abbr) {
