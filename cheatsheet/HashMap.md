@@ -4,11 +4,44 @@ Ready to tackle those coding problems with HashMap mastery? Let's dive into the 
 ### Create a HashMap and add values
 ```
     Map<String, Integer> map = new HashMap<>();
-    map.put("pravs", 20);
-    map.put("kishore", 40);
+    map.put("apple", 20);
+    map.put("banana", 40);
 
     // If value has to be list
     Map<String, List<Integer>> map = new HashMap<>();
+```
+
+### containsKey()
+
+Checks if  a specific key exists in the HashMap
+
+```
+    map.containsKey("apple"); // returns true
+    map.containsKey("banana"); // returns false
+```
+
+### get()
+
+Retrieves the value associated with a given key.
+
+```
+    map.get(key);
+```
+
+### remove()
+
+Removes a key-value pair from the HashMap.
+
+```
+    map.remove(key);
+```
+
+## size()
+
+Returns the size of the HashMap.
+
+```
+    map.size();
 ```
 
 ### Iterate HashMap for values
@@ -76,4 +109,20 @@ Additional Note:
 
     HashMap<String, List<String>> groups = new HashMap<>();
     groups.compteIfAbsent(key, key -> new ArrayList<>()).add(group);
+```
+
+### clear
+
+Removes all key-value pairs.
+
+```
+    map.clear();
+```
+
+### isEmpty()
+
+Returns true if the HashMap is Empty
+
+```
+    map.isEmpty();
 ```
