@@ -2,7 +2,7 @@
  * https://leetcode.com/problems/group-shifted-strings/
  * LeetCode: 249
  */
-package algods.random;
+package algods.facebook.mostfrequent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -67,4 +67,7 @@ public class GroupShiftedStrings {
         }
         return sb.toString();
     }
+
+    // Time Complexity: O(N*K) where N is number of strings and K is the largest length of a string
+    // Space Complexity: O(N*K)
 }
