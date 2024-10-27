@@ -4,11 +4,9 @@
  */
 package algods.graphs;
 
+import java.util.LinkedList;
 import java.util.Queue;
 
-import algods.random.Pair;
-
-import java.util.LinkedList;
 /*
  * Thoughts:
  *  - As from the problem statement, it requires us to traverse the maze from start to destination.
@@ -26,44 +24,48 @@ import java.util.LinkedList;
  *      
  */
 public class Maze {
-    private static final int[][] directions = {{-1,0},{0,-1},{0,1},{1,0}};
+    private static final int[][] directions = { { -1, 0 }, { 0, -1 }, { 0, 1 }, { 1, 0 } };
 
     public boolean hasPath(int[][] maze, int[] start, int[] destination) {
-        if(maze == null)
+        if (maze == null)
             throw new IllegalArgumentException("input cannot be null");
 
         int rowLen = maze.length;
         int colLen = maze[0].length;
 
         boolean[][] visited = new boolean[rowLen][colLen];
-        Queue<Pair<Integer,Integer>> q = new LinkedList<>();
+        Queue<Pair> q = new LinkedList<>();
 
         // adding the start cell to the queue
-        q.offer(new Pair<>(start[0],start[1]));
+        q.offer(new Pair(start[0], start[1]));
         visited[start[0]][start[1]] = true;
 
-        while(!q.isEmpty()) {
-            Pair<Integer,Integer> currCell = q.poll();
+        while (!q.isEmpty()) {
+            Pair currCell = q.poll();
 
-            if(currCell.getKey() == destination[0] && currCell.getValue() == destination[1])
+            if (currCell.row == destination[0] && currCell.col == destination[1])
                 return true;
 
-            for(int[] direction : directions) {
-                int currRow = currCell.getKey();
-                int currCol = currCell.getValue();
+            for (int[] direction : directions) {
+                int currRow = currCell.row;
+                int currCol = currCell.col;
 
-                while(currRow>=0 && currRow<rowLen && currCol>=0 && currCol<colLen && maze[currRow][currCol] == 0){
+                while (currRow >= 0 && currRow < rowLen && currCol >= 0 && currCol < colLen
+                        && maze[currRow][currCol] == 0) {
                     currRow += direction[0];
                     currCol += direction[1];
                 }
                 currRow -= direction[0];
                 currCol -= direction[1];
-                if(!visited[currRow][currCol]){
-                    q.offer(new Pair<>(currRow, currCol));
+                if (!visited[currRow][currCol]) {
+                    q.offer(new Pair(currRow, currCol));
                     visited[currRow][currCol] = true;
                 }
             }
         }
         return false;
+    }
+
+    private record Pair(int row, int col) {
     }
 }
